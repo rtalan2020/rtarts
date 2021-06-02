@@ -3,12 +3,12 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "outDir": "./out-tsc/app",
-    "types": []
+    "types": [],
   },
   "angularCompilerOptions": {
     "strictTemplates": true,
     "strictDomEventTypes": false,
-    "fullTemplateTypeCheck": true,
+    "fullTemplateTypeCheck": true
   },
   "files": [
     "src/main.ts",
