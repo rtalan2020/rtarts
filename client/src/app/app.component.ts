@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountService } from './account/account.service';
 import { BasketService } from './basket/basket.service';
 
 
@@ -11,10 +12,11 @@ import { BasketService } from './basket/basket.service';
 export class AppComponent implements OnInit {
   title = 'RTArts';
 
-  constructor(private basketService: BasketService,){}
+  constructor(private basketService: BasketService, private accountService: AccountService){}
 
   ngOnInit(): void {
     this.loadBasket();
+    this.loadCurrentUser();
   }
 
   loadBasket(){
@@ -25,5 +27,12 @@ export class AppComponent implements OnInit {
         console.log(error);
       });
     }
+  }
+  loadCurrentUser(){
+    const token = localStorage.getItem('token');
+    this.accountService.loadCurrentUser(token).subscribe(() => {
+      }, error => {
+        console.log(error);
+      });
   }
 }
