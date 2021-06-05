@@ -8,6 +8,8 @@ namespace API.Extensions
         public static string RetrieveEmailFromPrincipal(this ClaimsPrincipal user)
         {
             return user?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            //this can also be rewritten as
+            //return user.FindFirstValue(ClaimTypes.Email);      
         }
     }
 }
