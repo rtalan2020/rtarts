@@ -40,11 +40,15 @@ export class ProductDetailsComponent implements OnInit {
 
    getCurrentProductInBasketCount(): number {
      const basket = this.basketService.getCurrentBasketValue();
-     var productQuantity:number;
-    const foundItemIndex = basket.items.findIndex(x => x.id === this.product.id);
-    if (foundItemIndex >= 0)
-      productQuantity = basket.items[foundItemIndex].quantity;
-    else
+     var productQuantity: number;
+     if (basket) {
+       const foundItemIndex = basket.items.findIndex(x => x.id === this.product.id);
+       if (foundItemIndex >= 0)
+         productQuantity = basket.items[foundItemIndex].quantity;
+       else
+         productQuantity = 0;
+     }
+     else
       productQuantity = 0;
     return productQuantity;
   }
