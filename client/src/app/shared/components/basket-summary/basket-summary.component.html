@@ -1,4 +1,4 @@
-<ng-container *ngIf="items.length > 0">
+<ng-container *ngIf="items.length > 0 " >
     <div class="table-responsive">
         <table class="table table-bordless">
             <thead [class.thead-light]="isBasket || isOrder" class="border-0">
@@ -10,7 +10,7 @@
                     </th>
                     <th  scope="col" >
                         <div class="text-uppercase">
-                            Unit Price
+                            Price
                         </div>
                     </th>
                     <th  scope="col">
@@ -20,17 +20,17 @@
                     </th>
                     <th  scope="col">
                         <div class="text-uppercase">
-                            Price
+                            Total
                         </div>
                     </th>              
-                    <th *ngIf="isBasket"  scope="col">
+                    <th *ngIf="isBasket"  class="border-0" scope="col">
                         <div class="text-uppercase">
                             Remove
                         </div>
                     </th>                                                                                                                                                  
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 <tr *ngFor="let item of items" class="border-0">
                     <th scope="row">
                         <div class="p-0">
@@ -38,19 +38,18 @@
                             <div class="ml-3 d-inline-block align-middle">
                                 <h5 class="mb-0">
                                     <a routerLink="/shop/{{item.id}}" 
-                                        class="text-dark" style="text-decoration: none;">
+                                        class="text-dark">
                                         {{item.productName}}
                                     </a>
                                     <span 
                                         *ngIf="item.type"
-                                        class="text-muted  small font-italic d-block"
+                                        class="text-muted font-weight-normal font-italic d-block"
                                     >
                                         Type: {{item.type}}
                                     </span>
                                 </h5>
                             </div>
                         </div>
-
                     </th>
                     <td class="align-middle"><strong>{{item.price | currency}}</strong></td>
                     <td class="align-middle">
