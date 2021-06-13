@@ -20,14 +20,16 @@ export class CheckoutReviewComponent implements OnInit {
   ngOnInit(): void {
     this.basket$ = this.basketService.basket$;
   }
-  // tslint:disable-next-line: typedef
-  // createPaymentIntent() {
-  //   return this.basketService.createPaymentIntent().subscribe((response: any) => {
-  //     this.appStepper.next();
-  //   }, error => {
-  //     console.log(error);
-  //   });
-  // }
+
+  createPaymentIntent() {
+    return this.basketService.createPaymentIntent().subscribe((response: any) => {
+      this.appStepper.next();
+      // this.toastr.success('Payment Intent Created');
+    }, error => {
+      console.log(error);
+      this.toastr.error(error.messgae);
+    });
+  }
 
 
 }
